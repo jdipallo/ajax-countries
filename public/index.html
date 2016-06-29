@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+	<html ng-app="CountryApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Countries</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootswatch-darkly.min.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="./app.css">
+		<script type="text/javascript" src="angular/angular.min.js"></script>
+
+	</head>
+	<body ng-controller="viewController as viewCtrl">
+		<h1 class="jumbotron text-center">Countries!</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<label for="countryToSearch">Country</label>
+					<input type="text" id="countryToSearch" ng-model="viewCtrl.countryToSearchFor"/>
+					<!-- <button class="btn btn-lg" ng-click="viewCtrl.getAllCountries()">Load Countries</button> -->
+					<button class="btn btn-md" ng-click="viewCtrl.searchCountries(viewCtrl.countryToSearchFor)">Search</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+				<table class="table-striped">
+					<thead class="thead-inverse">
+						<tr>
+							<th>Local Name</th>
+							<th>Region</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="country in viewCtrl.countries">
+							<td>{{ country.localName }} </td>
+							<td>{{ country.region }} </td>
+						</tr>
+					<tbody>
+				</table>
+				</div>	
+			</div>
+		</div>
+
+		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./view-module.js"></script>
+	</body>
+</html>
