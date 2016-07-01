@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Countries</title>
-		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootswatch-darkly.min.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootswatch-yeti.min.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="./app.css">
+		<script type="text/javascript" src="jquery/dist/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
 		<script type="text/javascript" src="angular/angular.min.js"></script>
 
 	</head>
@@ -22,25 +24,44 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-				<table class="table-striped">
-					<thead class="thead-inverse">
-						<tr>
-							<th>Local Name</th>
-							<th>Region</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="country in viewCtrl.countries">
-							<td>{{ country.localName }} </td>
-							<td>{{ country.region }} </td>
-						</tr>
-					<tbody>
-				</table>
+					<table class="table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Region</th>
+								<th>Traveled To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="country in viewCtrl.countries">
+								<td>{{ country.name }} </td>
+								<td>{{ country.region }} </td>
+								<td ng-class="country.hasTraveled ? 'visited' : 'notVisited'"
+									ng-click="viewCtrl.updateCountry(country)">
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>	
 			</div>
+
+			<div class="modal fade" id="updateModal" role="dialog">
+		    <div class="modal-dialog">
+
+		      <!-- Modal for update country sucess-->
+		      <div class="modal-content modal-sm">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        </div>
+		        <div class="modal-body">
+		        	Country updated succesfully
+				 </div>
+		      </div>
+
+		    </div>
 		</div>
 
-		<script type="text/javascript" src="./app.js"></script>
-		<script type="text/javascript" src="./view-module.js"></script>
+		<script type="text/javascript" src="/app.js"></script>
+		<script type="text/javascript" src="/view-module.js"></script>
 	</body>
 </html>

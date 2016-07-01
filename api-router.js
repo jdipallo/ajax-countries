@@ -7,5 +7,8 @@ apiRouter.route('/countries')
 apiRouter.route('/search/:country')
 	.get(countryCtrl.search)
 
+apiRouter.route('/update/:country')
+	.put(countryCtrl.update)
+
 module.exports = apiRouter
 
